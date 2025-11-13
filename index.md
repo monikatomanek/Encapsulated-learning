@@ -8,13 +8,13 @@ Welcome to **Encapsulated Learning** - a carefully structured study repo by [Mon
 
 ---
 
-## 🔷 Sections
+## Sections
 
-### 🧱 [OOP in Python](./oop-python-guide/oop_guide.md)
+### [OOP in Python](./oop-python-guide/oop_guide.md)
 
 A full walkthrough of Object-Oriented Programming using a clean example. Includes inheritance, encapsulation, polymorphism, abstraction, and class vs static methods.
 
-### 🛡️ [Dotenv Guide](./dotenv-guide/dotenv_guide.md)
+### [Dotenv Guide](./dotenv-guide/dotenv_guide.md)
 
 Learn how to securely manage API keys, DB passwords, and other sensitive config using `.env` files, `python-dotenv`, and `os.getenv()`.
 
@@ -24,13 +24,13 @@ Includes example project files:
 * `demo.py`
 * `.env.example`
 
-### 🧮 [Python Patterns for Data Analysis](./python-patterns/python_patterns.md)
+### [Python Patterns for Data Analysis](./python-patterns/python_patterns.md)
 
 A cheat-proof collection of essential data analysis patterns using pandas. Includes frequency counts, filters, loops, groupby, and formatted printing - all with mental sentences to help you remember.
 
 ---
 
-## 💡 About
+## About
 
 This is not a textbook. It’s not a dump of copy-paste tricks either. It’s a **living reference** for Python learners who want:
 
