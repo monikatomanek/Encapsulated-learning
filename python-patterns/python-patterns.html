@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Patterns - Encapsulated Learning</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background-color: #fff;
+      color: #111;
+    }
+    h1, h2, h3 {
+      color: #1a1a1a;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, Monaco, monospace;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.5rem 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f9f9f9;
+    }
+    ul, ol {
+      margin-bottom: 1.5rem;
+    }
+    blockquote {
+      border-left: 4px solid #ccc;
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Python Patterns for Data Analysis</h1>
+  <p>This guide is part of the <strong>Encapsulated-learning</strong> repo by <a href="https://github.com/monikatomanek">Monika Tomanek</a>. Do not redistribute without attribution.</p>
+
+  <h2>Purpose</h2>
+  <p>A curated collection of Python and pandas patterns for everyday data tasks. Includes code snippets, use cases, and memory aids.</p>
+
+  <hr>
+  <h2>Core Patterns</h2>
+
+  <h3>1. Load a CSV</h3>
+  <pre><code>df = pd.read_csv('filename.csv')</code></pre>
+  <blockquote>'Bring my spreadsheet into Python and call it df'</blockquote>
+
+  <h3>2. Count values in a column</h3>
+  <pre><code>df['ColumnName'].value_counts()</code></pre>
+  <blockquote>'How often does each unique value appear in this column?'</blockquote>
+
+  <h3>3. Count values as percentages</h3>
+  <pre><code>df['ColumnName'].value_counts(normalize=True) * 100</code></pre>
+  <blockquote>'What percent of the total is each value in this column?'</blockquote>
+
+  <h3>4. Filter rows by condition</h3>
+  <pre><code>filtered_df = df[df['ColumnName'] == 'SomeValue']</code></pre>
+  <blockquote>'Give me only the rows where this column has this value'</blockquote>
+
+  <h3>5. Find the most common value</h3>
+  <pre><code>
+top_result = df['ColumnName'].value_counts().head(1)
+top_name = top_result.index[0]
+top_value = top_result.values[0]</code></pre>
+  <blockquote>'What’s the most common category in this column?'</blockquote>
+
+  <h3>6. Format output nicely</h3>
+  <pre><code>print(f"\nPercentage: {value:.2f}%")</code></pre>
+  <blockquote>'Say this sentence and plug in my number using 2 decimal places'</blockquote>
+
+  <h3>7. Boolean filter (True/False check)</h3>
+  <pre><code>df[df['BooleanColumn'] == True]</code></pre>
+  <blockquote>'Give me only the rows where this is True'</blockquote>
+
+  <h3>8. Conditional logic (if / elif / else)</h3>
+  <pre><code>if score >= 90:
+    print("Excellent")
+elif score >= 75:
+    print("Good")
+else:
+    print("Needs improvement")</code></pre>
+
+  <h3>9. Loop through values</h3>
+  <pre><code>for item in df['ColumnName'].unique():
+    print(item)</code></pre>
+
+  <h3>10. Create a new column from logic</h3>
+  <pre><code>def custom_logic(row):
+    if row['Column'] == 'something':
+        return 'A'
+    return 'B'
+
+df['NewCol'] = df.apply(custom_logic, axis=1)</code></pre>
+
+  <h3>11. Group stats (mean, sum, etc.)</h3>
+  <pre><code>df.groupby('GroupCol')['TargetCol'].mean()</code></pre>
+  <blockquote>'Group by this category, then average or sum something'</blockquote>
+
+  <h2>Summary Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Pattern</th>
+        <th>Code Template</th>
+        <th>Use Case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Load CSV</td>
+        <td><code>pd.read_csv('file.csv')</code></td>
+        <td>First step in data analysis</td>
+      </tr>
+      <tr>
+        <td>Count values</td>
+        <td><code>.value_counts()</code></td>
+        <td>Frequency of each value</td>
+      </tr>
+      <tr>
+        <td>Percentages</td>
+        <td><code>.value_counts(normalize=True)</code></td>
+        <td>Proportion of each value</td>
+      </tr>
+      <tr>
+        <td>Filtering</td>
+        <td><code>df[df['Col'] == val]</code></td>
+        <td>Subset of rows</td>
+      </tr>
+      <tr>
+        <td>Looping</td>
+        <td><code>for item in list</code></td>
+        <td>Do something for each value</td>
+      </tr>
+      <tr>
+        <td>Group stats</td>
+        <td><code>.groupby('Col')</code></td>
+        <td>Aggregate analysis</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer>
+    <hr>
+    <p><em>This guide is part of the <strong>Encapsulated-learning</strong> repo by <a href="https://github.com/monikatomanek">Monika Tomanek</a>. For educational use only.</em></p>
+  </footer>
+</body>
+</html>
