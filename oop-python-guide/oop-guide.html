@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OOP Guide - Encapsulated Learning</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background-color: #fff;
+      color: #111;
+    }
+    h1, h2, h3 {
+      color: #1a1a1a;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, Monaco, monospace;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    blockquote {
+      border-left: 4px solid #ccc;
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Object-Oriented Programming (OOP) in Python - A Descriptive Guide</h1>
+
+  <p>This guide is part of the <strong>Encapsulated-learning</strong> repo by <a href="https://github.com/monikatomanek">Monika Tomanek</a>. Do not redistribute without attribution.</p>
+
+  <h2>1. What is OOP?</h2>
+  <p>OOP is a way to organize code into objects that represent real-world concepts. These objects combine data (attributes) and behavior (methods).</p>
+  <blockquote>'Group data and behavior into one object to simplify code and reflect real-world logic.'</blockquote>
+
+  <h3>Without OOP:</h3>
+  <pre><code>def drive_car(brand, model):
+    print(f'{brand} {model} is driving.')
+
+drive_car('Toyota', 'Corolla')
+drive_car('Tesla', 'Model 3')</code></pre>
+
+  <h3>With OOP:</h3>
+  <pre><code>class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def drive(self):
+        print(f'{self.brand} {self.model} is driving.')
+
+car1 = Car('Toyota', 'Corolla')
+car2 = Car('Tesla', 'Model 3')
+car1.drive()
+car2.drive()</code></pre>
+
+  <table>
+    <thead>
+      <tr><th>Without OOP</th><th>With OOP</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Repetition and scattered data</td><td>Encapsulated logic</td></tr>
+      <tr><td>Hard to extend</td><td>Reusable and extendable</td></tr>
+    </tbody>
+  </table>
+
+  <h2>2. Encapsulation</h2>
+  <p>Encapsulation protects the internal state of objects and exposes only necessary parts.</p>
+
+  <h3>Before:</h3>
+  <pre><code>car.speed = -50  # allowed! even though it's invalid</code></pre>
+
+  <h3>After:</h3>
+  <pre><code>class Car:
+    def __init__(self, brand, model, speed=0):
+        self.brand = brand
+        self.model = model
+        self.speed = speed
+
+    @property
+    def speed(self):
+        return self.__speed
+
+    @speed.setter
+    def speed(self, value):
+        if value < 0:
+            print('Speed cannot be negative. Setting to 0.')
+            self.__speed = 0
+        else:
+            self.__speed = value</code></pre>
+
+  <p><strong>Problem avoided:</strong> Invalid object state (like negative speed)</p>
+
+  <h2>3. Inheritance</h2>
+  <p>Inheritance allows new classes to reuse code from existing classes.</p>
+  <pre><code>class Car:
+    def drive(self):
+        print('Car is driving')
+
+class ElectricCar(Car):
+    def charge(self):
+        print('Charging battery')</code></pre>
+
+  <p><strong>Problem avoided:</strong> Copy-pasting drive() in every new car type</p>
+
+  <h2>4. Polymorphism</h2>
+  <p>Different classes can define their own version of the same method.</p>
+
+  <pre><code>class ManualCar(Car):
+    def drive(self):
+        print('Manual driving')
+
+class AutoCar(Car):
+    def drive(self):
+        print('Automatic driving')
+
+cars = [ManualCar(), AutoCar()]
+for car in cars:
+    car.drive()</code></pre>
+
+  <p><strong>Problem avoided:</strong> You don’t need separate logic to call the correct method. It just works.</p>
+
+  <h2>5. Abstraction</h2>
+  <p>Hide implementation details and expose only essentials.</p>
+
+  <pre><code>from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod
+    def drive(self):
+        pass
+
+    @abstractmethod
+    def refuel(self):
+        pass
+
+class Car(Vehicle):
+    def drive(self):
+        print('Car drives')
+
+    def refuel(self):
+        print('Car refuels')</code></pre>
+
+  <p><strong>Problem avoided:</strong> Missing core methods. Enforces contracts for subclasses.</p>
+
+  <h2>6. Class and Static Methods</h2>
+  <pre><code>class Car:
+    total_cars = 0
+
+    def __init__(self):
+        Car.total_cars += 1
+
+    @classmethod
+    def show_total_cars(cls):
+        print(f'Total cars created: {cls.total_cars}')
+
+    @staticmethod
+    def convert_speed_to_mph(kph):
+        return kph * 0.621371</code></pre>
+
+  <p><strong>Class methods:</strong> Use shared class data.<br>
+     <strong>Static methods:</strong> Utility tools not tied to any object or class state.</p>
+
+  <footer>
+    <hr>
+    <p><em>This guide is part of the <strong>Encapsulated-learning</strong> repo by <a href="https://github.com/monikatomanek">Monika Tomanek</a>. For educational use only.</em></p>
+  </footer>
+</body>
+</html>
