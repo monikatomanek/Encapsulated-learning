@@ -1,12 +1,16 @@
 ---
 
-This guide is part of the `Encapsulated-learning` repo by [Monika Tomanek](https://github.com/monikatomanek). Do not redistribute without attribution.
+This guide is part of the `Encapsulated-learning` repo by [Monika Tomanek](https://github.com/monikatomanek).
+Do not redistribute without attribution.
 
 ---
 
-# Object-Oriented Programming (OOP) in Python - A Descriptive Guide
+# Object-Oriented Programming (OOP) in Python — Full Guide with Comparisons and Explanations
 
-This is a detailed and explanatory guide to understanding Object-Oriented Programming (OOP) in Python. It includes structured content, real-world analogies, practical code examples, and common pitfalls. It is intended to help learners deeply understand OOP beyond superficial summaries.
+This is not just a cheat sheet. It’s a full learning walkthrough.
+You’ll learn what OOP is, what problems it solves, how it compares to non-OOP code, and what changes with each core concept: classes, encapsulation, inheritance, polymorphism, abstraction, class methods and static methods.
+
+---
 
 ## Table of Contents
 
@@ -18,24 +22,28 @@ This is a detailed and explanatory guide to understanding Object-Oriented Progra
 6. Abstraction
 7. Class and Static Methods
 
+---
+
 ## 1. What is OOP?
 
-OOP (Object-Oriented Programming) is a programming paradigm that organizes code around objects. These objects bundle data and behavior together.
+OOP (Object-Oriented Programming) is a programming style where you group **data** and the **code that operates on that data** together into reusable building blocks called **objects**.
 
-### Benefits of OOP:
+### Why does this matter?
+Without OOP, your code becomes scattered. Data lives in one place, logic in another, and you keep passing things around manually.
+With OOP, everything related to a concept (like a `Car`) lives inside one neat structure.
 
-- Cleaner, modular code
-- Logical structure aligned with real-world entities
-- Reusable components and extensible design
-- Easier to maintain, scale, and debug
+### Problems OOP solves:
+- Data and logic are scattered and fragile
+- Copy-paste reuse everywhere
+- State is not tied to logic
+- Adding new features creates chaos
 
-Without OOP, a program becomes a large mess of functions and variables with unclear relationships. OOP gives structure.
+---
 
 ## 2. Class and Object
 
-A class is a blueprint for creating objects. An object is an instance of a class.
-
-### Code without OOP:
+### Problem without OOP:
+You have to pass the same values (`brand`, `model`, etc.) to every function manually.
 
 ```python
 def drive_car(brand, model):
@@ -45,9 +53,9 @@ drive_car('Toyota', 'Corolla')
 drive_car('Tesla', 'Model 3')
 ```
 
-This works, but what if you want to manage multiple behaviors like braking, accelerating, parking? You would need to pass `brand` and `model` to every function. This quickly becomes repetitive, error-prone, and hard to organize.
+This works, but what if you want to also add speed, colour, fuel, and methods like brake, reverse, accelerate? You end up with a jungle of repeated arguments.
 
-### Code with OOP:
+### Using OOP:
 
 ```python
 class Car:
@@ -64,18 +72,22 @@ car1.drive()
 car2.drive()
 ```
 
-### Common problem without OOP:
-- Difficult to manage state (no data attached to behavior)
-- Logic and data live in separate places
-- Repeated code
+### Comparison Table:
 
-OOP allows us to encapsulate state and behavior in one reusable structure.
+| Feature                | Without OOP                              | With OOP                              |
+|------------------------|-------------------------------------------|----------------------------------------|
+| State handling         | Manual passing of values                  | Data stored inside object              |
+| Code organization      | Functions and data scattered              | Bundled in one place                   |
+| Adding behavior        | Requires new functions with many params   | Just add a new method to the class     |
+
+---
 
 ## 3. Encapsulation
 
-Encapsulation means hiding internal state and exposing controlled access.
+Encapsulation hides and protects internal data from being changed directly in unsafe ways.
 
-### Problem without Encapsulation:
+### Without Encapsulation:
+Anyone can change the value of speed to anything — even invalid values.
 
 ```python
 class Car:
@@ -84,12 +96,12 @@ class Car:
         self.model = model
         self.speed = speed
 
-car = Car('Ford', 'Focus', -50)  # Speed should not be negative
+car = Car('Ford', 'Focus', -50)
 ```
 
-Here, speed can be set to a negative value. There is no check or validation.
+Now your car has a negative speed. There are no safeguards.
 
-### Solution with Encapsulation:
+### With Encapsulation:
 
 ```python
 class Car:
@@ -114,13 +126,22 @@ car = Car('Ford', 'Focus', -50)
 print(car.speed)  # Output: 0
 ```
 
-The internal variable `__speed` is protected from direct access and validated through a setter.
+### Comparison Table:
+
+| Feature               | Without Encapsulation      | With Encapsulation                     |
+|-----------------------|-----------------------------|------------------------------------------|
+| Validation            | None                        | Built-in to setter                       |
+| Accidental changes    | Easy to break state         | Protected behind controlled access       |
+| Debugging             | Hard to track errors        | Predictable behavior                     |
+
+---
 
 ## 4. Inheritance
 
-Inheritance allows a class to extend the functionality of another.
+Inheritance allows you to reuse code across related classes.
 
 ### Without Inheritance:
+You copy methods across classes and repeat logic.
 
 ```python
 class ElectricCar:
@@ -130,12 +151,7 @@ class ElectricCar:
 
     def drive(self):
         print(f'{self.brand} {self.model} is driving.')
-
-    def charge(self):
-        print(f'{self.brand} {self.model} is charging.')
 ```
-
-You're repeating `__init__` and `drive` methods.
 
 ### With Inheritance:
 
@@ -152,55 +168,67 @@ class ElectricCar(Car):
     def charge(self):
         print(f'{self.brand} {self.model} is charging.')
 
-my_car = ElectricCar('Tesla', 'Model S')
-my_car.drive()
-my_car.charge()
+ecar = ElectricCar('Tesla', 'Model S')
+ecar.drive()
+ecar.charge()
 ```
 
-### Problem avoided:
-- Duplicated logic
-- Unnecessary repetition
-- Lack of structure in related classes
+### Comparison Table:
 
-Inheritance groups shared functionality and enables easier scaling.
+| Feature                | Without Inheritance     | With Inheritance                |
+|------------------------|--------------------------|----------------------------------|
+| Code duplication       | High                     | Minimal                          |
+| New functionality      | Requires copy-pasting    | Add only what’s different        |
+| Maintenance            | Repeating updates        | Fix in one place                 |
+
+---
 
 ## 5. Polymorphism
 
-Polymorphism allows different classes to have methods with the same name but different implementations.
+Polymorphism lets you define the same method name with different behaviour depending on the class.
 
 ### Example:
 
 ```python
 class Car:
     def drive(self):
-        print('Generic driving')
+        print('Generic car driving')
 
 class ManualCar(Car):
     def drive(self):
-        print('Manual drive mode')
+        print('Driving with manual gear shifting')
 
-class AutomaticCar(Car):
+class AutoCar(Car):
     def drive(self):
-        print('Automatic drive mode')
+        print('Driving with automatic transmission')
 
-cars = [ManualCar(), AutomaticCar()]
+cars = [ManualCar(), AutoCar()]
 for car in cars:
     car.drive()
 ```
 
-### Problem avoided:
-- You don't need to check the type of car
-- Code becomes cleaner and interchangeable
+Each object calls the correct `drive()` method without needing `if` statements.
+
+### Problem without Polymorphism:
+You’d have to write logic like:
+
+```python
+if type(car) == 'Manual':
+    manual_drive(car)
+elif type(car) == 'Auto':
+    auto_drive(car)
+```
+
+This is fragile and hard to scale.
+
+---
 
 ## 6. Abstraction
 
-Abstraction allows us to define expected behavior without enforcing implementation.
+Abstraction lets you define *what* something should do without worrying about *how* it does it.
 
-### Without Abstraction:
-
-There's no common agreement on which methods must be implemented. Anyone can forget `drive()` or `refuel()`.
-
-### With Abstraction:
+### With abstraction:
+Use `ABC` (Abstract Base Class) to define a common interface.
 
 ```python
 from abc import ABC, abstractmethod
@@ -219,22 +247,20 @@ class Car(Vehicle):
         print('Car drives')
 
     def refuel(self):
-        print('Car refuels')
+        print('Refueling car')
 ```
 
-Now every subclass of `Vehicle` must implement `drive()` and `refuel()` or Python will raise an error.
+If a subclass does not implement all abstract methods, Python raises an error.
 
-### Problem avoided:
-- Missing core methods
-- Unreliable design contracts
+---
 
 ## 7. Class and Static Methods
 
-### Class Method:
-Operates on the class itself (shared state).
+### Class Methods:
+Operate on the class itself. Useful for tracking shared state.
 
-### Static Method:
-Does not use object or class state. Just a utility.
+### Static Methods:
+Utility methods that don’t access instance or class state.
 
 ```python
 class Car:
@@ -248,29 +274,32 @@ class Car:
         print(f'Total cars created: {cls.total_cars}')
 
     @staticmethod
-    def convert_speed_to_mph(kph):
+    def convert_speed(kph):
         return kph * 0.621371
-
-Car()
-Car()
-Car.show_total_cars()  # Output: Total cars created: 2
-print(Car.convert_speed_to_mph(100))  # Output: 62.1371
 ```
+
+### When to use each:
+
+| Method Type      | Use When                                           |
+|------------------|----------------------------------------------------|
+| Instance Method  | Access or modify instance-specific data            |
+| Class Method     | Work with class-level data or alternate constructors |
+| Static Method    | Perform general-purpose tasks with no state access |
 
 ---
 
-## Summary
+## Final Thoughts
 
-This guide offers more than syntax. It explains why OOP matters and how it prevents real-world issues:
+This guide isn’t just code — it’s a study of how OOP organises your thinking:
 
-- Classes reduce repetition and organize related data
-- Encapsulation prevents invalid data states
-- Inheritance reduces duplication and enables structure
-- Polymorphism enables flexibility and cleaner interfaces
-- Abstraction defines contracts for consistency
-- Class and static methods organize logic properly
+- Classes represent things
+- Encapsulation keeps things safe
+- Inheritance avoids repetition
+- Polymorphism lets different things behave in similar ways
+- Abstraction sets rules and expectations
+- Class and static methods separate shared tools from individual behaviour
 
-Use this guide as a reference for building clean, structured Python code.
+You’re not just learning syntax — you’re learning how to **design software**.
 
 ---
 
