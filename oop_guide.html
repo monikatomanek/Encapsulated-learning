@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OOP in Python - Encapsulated Learning</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.7;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1, h2, h3 {
+      color: #111;
+    }
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+    }
+    a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .fancy-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(90deg, #222, #666, #222);
+      background-size: 200% auto;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: shine 4s linear infinite;
+      margin: 0 0 2rem -8px;
+      padding-right: 6px;
+      overflow: visible;
+    }
+    @keyframes shine {
+      0% { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="fancy-title">Encapsulated Learning</h1>
+
+  <h2>OOP in Python</h2>
+  <p>This is part of the Encapsulated Learning repo by <a href="https://github.com/monikatomanek">Monika Tomanek</a>. This guide explains Object-Oriented Programming (OOP) in Python using comparisons, examples, and practical code.</p>
+
+  <h3>1. What is OOP?</h3>
+  <p>OOP means organizing your code using classes and objects that model real things. This keeps your code modular, easier to maintain, and scalable.</p>
+
+  <h3>2. Classes and Objects</h3>
+  <p>Without OOP:</p>
+  <pre><code>def drive_car(brand, model):
+    print(f"{brand} {model} is driving.")
+
+drive_car("Toyota", "Corolla")</code></pre>
+
+  <p>With OOP:</p>
+  <pre><code>class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def drive(self):
+        print(f"{self.brand} {self.model} is driving.")
+
+car1 = Car("Toyota", "Corolla")
+car1.drive()</code></pre>
+
+  <p>🚫 Problem without OOP: You’ll keep duplicating logic. Data is separate from behavior. No structure.</p>
+  <p>✅ OOP groups data + behavior together in one object.</p>
+
+  <h3>3. Encapsulation</h3>
+  <p>Encapsulation protects the inner state of your objects. Example: prevent speed from being set to a negative number.</p>
+
+  <pre><code>class Car:
+    def __init__(self, brand, model, speed=0):
+        self.brand = brand
+        self.model = model
+        self.speed = speed
+
+    @property
+    def speed(self):
+        return self.__speed
+
+    @speed.setter
+    def speed(self, value):
+        if value &lt; 0:
+            self.__speed = 0
+        else:
+            self.__speed = value</code></pre>
+
+  <p>Now the car can't have a negative speed by mistake.</p>
+
+  <h3>4. Inheritance</h3>
+  <pre><code>class Car:
+    def drive(self):
+        print("Driving...")
+
+class ElectricCar(Car):
+    def charge(self):
+        print("Charging...")</code></pre>
+
+  <p>✅ Reuse logic from the Car class.</p>
+
+  <h3>5. Polymorphism</h3>
+  <pre><code>class ManualCar(Car):
+    def drive(self):
+        print("Manual drive")
+
+class AutoCar(Car):
+    def drive(self):
+        print("Automatic drive")</code></pre>
+
+  <p>Even though they all have drive(), the result is different. That's polymorphism.</p>
+
+  <h3>6. Abstraction</h3>
+  <pre><code>from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod
+    def drive(self):
+        pass
+
+class Car(Vehicle):
+    def drive(self):
+        print("Car drives")</code></pre>
+
+  <p>✅ Focus on 'what it does' not 'how'.</p>
+
+  <h3>7. Class and Static Methods</h3>
+  <pre><code>class Car:
+    total_cars = 0
+
+    def __init__(self):
+        Car.total_cars += 1
+
+    @classmethod
+    def show_total_cars(cls):
+        print(cls.total_cars)
+
+    @staticmethod
+    def convert_speed(kph):
+        return kph * 0.621371</code></pre>
+
+  <hr>
+  <footer>
+    <p><em>Maintained by <a href="https://github.com/monikatomanek">Monika Tomanek</a>. Do not redistribute without credit.</em></p>
+  </footer>
+</body>
+</html>
