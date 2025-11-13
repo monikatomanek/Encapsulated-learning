@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dotenv Guide - Encapsulated Learning</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background-color: #fff;
+      color: #111;
+    }
+    h1, h2, h3 {
+      color: #1a1a1a;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, Monaco, monospace;
+    }
+    ul, ol {
+      margin-bottom: 1.5rem;
+    }
+    blockquote {
+      border-left: 4px solid #ccc;
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dotenv Guide - Protecting Sensitive Info</h1>
+  <p>This guide is part of the <strong>Encapsulated-learning</strong> repo by <a href="https://github.com/monikatomanek">Monika Tomanek</a>. Do not redistribute without attribution.</p>
+
+  <h2>Why do we need this?</h2>
+  <p>When you write code for apps, APIs, or databases, you often need to use private information — things like:</p>
+  <ul>
+    <li>Database usernames and passwords</li>
+    <li>API keys</li>
+    <li>Server addresses</li>
+  </ul>
+  <p>If you include these directly in your code, anyone who sees your GitHub repo can steal them.</p>
+
+  <blockquote>'Use a .env file to store secrets and .gitignore to keep them private.'</blockquote>
+
+  <h2>Step-by-step setup</h2>
+
+  <h3>1. Install dotenv (once per environment)</h3>
+  <pre><code>pip install python-dotenv</code></pre>
+
+  <h3>2. Create a .env file</h3>
+  <p>In your root folder, create a file named <code>.env</code> with values like this:</p>
+  <pre><code>DB_USER=your_username
+DB_PASSWORD=your_password
+DB_HOST=localhost
+DB_NAME=your_database_name</code></pre>
+
+  <h3>3. Load .env values in config.py</h3>
+  <p>Create a file <code>config.py</code> that will read these values:</p>
+  <pre><code>import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+USER = os.getenv("DB_USER")
+PASSWORD = os.getenv("DB_PASSWORD")
+HOST = os.getenv("DB_HOST")
+DATABASE = os.getenv("DB_NAME")</code></pre>
+
+  <h3>4. Add .env to .gitignore</h3>
+  <p>Edit your <code>.gitignore</code> file to contain this line:</p>
+  <pre><code>.env</code></pre>
+
+  <p>This keeps your secrets out of your GitHub repo.</p>
+
+  <h3>5. Document it for other users</h3>
+  <p>In your <code>README.md</code> or instructions, tell users:</p>
+  <blockquote>'Create a .env file with the same keys, but use your own values.'</blockquote>
+
+  <h2>Summary Table</h2>
+  <ul>
+    <li><strong>.env</strong> - stores secrets</li>
+    <li><strong>.gitignore</strong> - prevents Git from uploading secrets</li>
+    <li><strong>load_dotenv()</strong> - loads the .env file</li>
+    <li><strong>os.getenv()</strong> - accesses values safely</li>
+  </ul>
+
+  <footer>
+    <hr>
+    <p><em>This guide is part of the <strong>Encapsulated-learning</strong> repo by <a href="https://github.com/monikatomanek">Monika Tomanek</a>. For educational use only.</em></p>
+  </footer>
+</body>
+</html>
