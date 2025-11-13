@@ -58,6 +58,24 @@
       color: #666;
       margin-top: 3rem;
     }
+    .button-link {
+      display: inline-block;
+      margin: 10px 0;
+      padding: 10px 20px;
+      background: linear-gradient(to right, #bbb, #ddd);
+      border-radius: 999px;
+      border: 1px solid #aaa;
+      color: #222;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+      text-decoration: none;
+      box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+    }
+    .button-link:hover {
+      background: linear-gradient(to right, #888, #aaa);
+      transform: scale(1.03);
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    }
   </style>
 </head>
 <body>
@@ -66,19 +84,19 @@
   <p>Welcome to <strong>Encapsulated Learning</strong> - a carefully structured study repo by <a href="https://github.com/monikatomanek">Monika Tomanek</a> designed to help you learn and apply modern Python techniques clearly and safely.</p>
 
   <blockquote>
-  Everything here is beginner-friendly, example-rich, and designed to stick.
+    Everything here is beginner-friendly, example-rich, and designed to stick.
   </blockquote>
 
   <img src="banner.png" alt="Encapsulated Learning banner">
 
   <hr>
 
-  <h2>Sections</h2>
+  <h2>🔷 Sections</h2>
 
-  <h3><a href="./oop-python-guide/oop_guide.md">OOP in Python</a></h3>
+  <p><a class="button-link" href="./oop-python-guide/oop_guide.md">OOP in Python</a></p>
   <p>A full walkthrough of Object-Oriented Programming using a clean example. Includes inheritance, encapsulation, polymorphism, abstraction, and class vs static methods.</p>
 
-  <h3><a href="./dotenv-guide/dotenv_guide.md">Dotenv Guide</a></h3>
+  <p><a class="button-link" href="./dotenv-guide/dotenv_guide.md">Dotenv Guide</a></p>
   <p>Learn how to securely manage API keys, DB passwords, and other sensitive config using <code>.env</code> files, <code>python-dotenv</code>, and <code>os.getenv()</code>.</p>
   <p>Includes example project files:</p>
   <ul>
@@ -87,12 +105,12 @@
     <li><code>.env.example</code></li>
   </ul>
 
-  <h3><a href="./python-patterns/python_patterns.md">Python Patterns for Data Analysis</a></h3>
+  <p><a class="button-link" href="./python-patterns/python_patterns.md">Python Patterns for Data Analysis</a></p>
   <p>A cheat-proof collection of essential data analysis patterns using pandas. Includes frequency counts, filters, loops, groupby, and formatted printing - all with mental sentences to help you remember.</p>
 
   <hr>
 
-  <h2>About</h2>
+  <h2>💡 About</h2>
   <p>This is not a textbook. It’s not a dump of copy-paste tricks either. It’s a <strong>living reference</strong> for Python learners who want:</p>
   <ul>
     <li>Real examples, not abstract theory</li>
