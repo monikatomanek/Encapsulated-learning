@@ -2,7 +2,7 @@
 
 Welcome to **Encapsulated Learning** - a carefully structured study repo by [Monika Tomanek](https://github.com/monikatomanek) designed to help you learn and apply modern Python techniques clearly and safely.
 
-> Everything here is beginner-friendly, example-rich, and designed to stick.
+Everything here is beginner-friendly, example-rich, and designed to stick.
 
 ![Banner](https://raw.githubusercontent.com/monikatomanek/Encapsulated-learning/main/banner.png)
 
