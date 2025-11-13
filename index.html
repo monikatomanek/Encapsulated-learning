@@ -6,14 +6,16 @@
   <title>Encapsulated Learning</title>
   <style>
     body {
-      font-family: system-ui, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
       max-width: 800px;
       margin: 40px auto;
       padding: 0 20px;
+      background-color: #f9f9f9;
+      color: #333;
     }
     h1, h2, h3 {
-      color: #222;
+      color: #111;
     }
     a {
       color: #0366d6;
@@ -23,12 +25,37 @@
       text-decoration: underline;
     }
     img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin: 20px 0;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      margin: 30px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    blockquote {
+      font-style: italic;
+      padding-left: 1rem;
+      border-left: 4px solid #ccc;
+      margin: 1.5rem 0;
     }
     hr {
       margin: 2rem 0;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    footer {
+      font-size: 0.85em;
+      color: #666;
+      margin-top: 3rem;
     }
   </style>
 </head>
@@ -41,26 +68,25 @@
     Everything here is beginner-friendly, example-rich, and designed to stick.
   </blockquote>
 
-  <img src="https://raw.githubusercontent.com/monikatomanek/Encapsulated-learning/main/banner.png" alt="Encapsulated Learning banner">
+  <img src="banner.png" alt="Encapsulated Learning banner">
 
   <hr>
 
   <h2>🔷 Sections</h2>
 
-  <h3> <a href="./oop-python-guide/oop_guide.md">OOP in Python</a></h3>
+  <h3><a href="./oop-python-guide/oop_guide.md">OOP in Python</a></h3>
   <p>A full walkthrough of Object-Oriented Programming using a clean example. Includes inheritance, encapsulation, polymorphism, abstraction, and class vs static methods.</p>
 
   <h3>🛡️ <a href="./dotenv-guide/dotenv_guide.md">Dotenv Guide</a></h3>
   <p>Learn how to securely manage API keys, DB passwords, and other sensitive config using <code>.env</code> files, <code>python-dotenv</code>, and <code>os.getenv()</code>.</p>
-  <p>Includes example project files:
-    <ul>
-      <li><code>config.py</code></li>
-      <li><code>demo.py</code></li>
-      <li><code>.env.example</code></li>
-    </ul>
-  </p>
+  <p>Includes example project files:</p>
+  <ul>
+    <li><code>config.py</code></li>
+    <li><code>demo.py</code></li>
+    <li><code>.env.example</code></li>
+  </ul>
 
-  <h3> <a href="./python-patterns/python_patterns.md">Python Patterns for Data Analysis</a></h3>
+  <h3><a href="./python-patterns/python_patterns.md">Python Patterns for Data Analysis</a></h3>
   <p>A cheat-proof collection of essential data analysis patterns using pandas. Includes frequency counts, filters, loops, groupby, and formatted printing - all with mental sentences to help you remember.</p>
 
   <hr>
@@ -78,7 +104,7 @@
   <hr>
 
   <footer>
-    <p><em>All material authored and maintained by <a href="https://github.com/monikatomanek">Monika Tomanek</a>. Feel free to explore, learn, and link back — but don’t steal. That would be boring.</em></p>
+    <p><em>All material authored and maintained by <a href="https://github.com/monikatomanek">Monika Tomanek</a>. Feel free to explore, learn, and link back - but don’t steal. That would be boring.</em></p>
   </footer>
 </body>
 </html>
