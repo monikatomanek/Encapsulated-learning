@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion Study Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: monospace;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        hr {
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Understanding Recursion in Python</h1>
+
+    <h2>1. What is Recursion?</h2>
+    <p>Recursion is a process where a function calls itself to solve a problem by breaking it into smaller and smaller pieces, until it reaches the simplest possible version (called the base case).</p>
+    <p><strong>Why Use Recursion?</strong></p>
+    <ul>
+        <li>Folders inside folders</li>
+        <li>Tasks that break down into the same kind of smaller tasks</li>
+        <li>Repeating patterns (math, music, nature)</li>
+    </ul>
+    <p><strong>Basic Structure of Recursion</strong></p>
+    <ul>
+        <li>Base case - the stopping condition</li>
+        <li>Recursive case - when the function calls itself</li>
+    </ul>
+
+    <h2>2. A Simple Recursive Example: Countdown</h2>
+    <pre><code>def countdown(n):
+    if n <= 0:
+        print("Liftoff!")  # Base case
+    else:
+        print(n)           # Recursive case
+        countdown(n - 1)</code></pre>
+    <p><strong>Example Call:</strong> <code>countdown(3)</code></p>
+    <pre><code>3
+2
+1
+Liftoff!</code></pre>
+
+    <h2>3. Calculating Factorials Recursively</h2>
+    <pre><code>def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)</code></pre>
+    <p><strong>Example: factorial(4)</strong></p>
+    <pre><code>factorial(4)
+= 4 * factorial(3)
+= 4 * 3 * factorial(2)
+= 4 * 3 * 2 * factorial(1)
+= 4 * 3 * 2 * 1
+= 24</code></pre>
+
+    <h2>4. Fibonacci Numbers with Recursion</h2>
+    <pre><code>def fib(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n - 1) + fib(n - 2)</code></pre>
+    <p><strong>Tree Visualisation of fib(5):</strong></p>
+    <pre><code>fib(5)
+- fib(4)
+  - fib(3)
+    - fib(2)
+      - fib(1)
+      - fib(0)
+    - fib(1)
+  - fib(2)
+    - fib(1)
+    - fib(0)
+- fib(3)
+  - fib(2)
+    - fib(1)
+    - fib(0)
+  - fib(1)</code></pre>
+
+    <h2>5. Common Mistakes in Recursion</h2>
+    <ul>
+        <li>Forgetting the base case - leads to infinite recursion</li>
+        <li>Returning wrong values - breaks the call chain</li>
+        <li>Missing input validation - causes errors on bad input</li>
+    </ul>
+
+    <h2>6. Generate String Combinations</h2>
+    <pre><code>def generate_combinations(char_set, length):
+    def helper(current):
+        if len(current) == length:
+            print(current)
+            return
+        for char in char_set:
+            helper(current + char)
+
+    helper("")</code></pre>
+    <p><strong>Input:</strong> char_set = ['a', 'b'], length = 2</p>
+    <pre><code>aa
+ab
+ba
+bb</code></pre>
+
+    <h2>7. Real-Life Uses of Recursion</h2>
+    <ul>
+        <li>File Systems - searching folders</li>
+        <li>Web Development - rendering nested HTML or comments</li>
+        <li>Game Development - simulating moves</li>
+        <li>Algorithms - sorting/searching (merge sort, quick sort)</li>
+        <li>Compression - decompressing nested files</li>
+    </ul>
+
+    <h2>8. When to Use or Avoid Recursion</h2>
+    <p><strong>Use it when:</strong></p>
+    <ul>
+        <li>The problem breaks into smaller self-similar parts</li>
+        <li>The structure is nested or tree-like</li>
+    </ul>
+    <p><strong>Avoid it when:</strong></p>
+    <ul>
+        <li>Performance matters and the recursion depth is high</li>
+        <li>You don't have a base case or stopping condition</li>
+    </ul>
+
+    <h2>9. Recursion in Inception (Movie)</h2>
+    <p>Each recursive call is like a deeper dream. Base case is waking up.</p>
+    <pre><code>def dream(level):
+    if level == 0:
+        return "You wake up"
+    else:
+        return dream(level - 1)</code></pre>
+
+    <h2>10. Final Checklist</h2>
+    <ul>
+        <li>Is there a base case?</li>
+        <li>Does the recursive case reduce the problem?</li>
+        <li>Will it eventually stop?</li>
+        <li>Do return values make sense when climbing back up?</li>
+    </ul>
+
+    <hr>
+    <p>Keep practicing. Draw trees. Add print statements. Be recursive.</p>
+</body>
+</html>
